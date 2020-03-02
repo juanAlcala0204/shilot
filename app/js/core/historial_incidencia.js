@@ -7,15 +7,38 @@ const arrayClientes = [
     { tipoIncidencia: 'ERROR DESARROLLO', cliente: 'Juan David Alcala', fechaIncidente: '23/12/2020', estadoIncidente: 'En proceso...'},
     { tipoIncidencia: 'ERROR DESARROLLO', cliente: 'Juan David Alcala', fechaIncidente: '23/12/2020', estadoIncidente: 'En proceso...'},
     { tipoIncidencia: 'ERROR DESARROLLO', cliente: 'Juan David Alcala', fechaIncidente: '23/12/2020', estadoIncidente: 'En proceso...'},
-]
-var the_Function = function(cell, formatterParams, onRendered){ //plain text value
+];
 
-    //var formA = '<form class="" action="/upload" method="post">'
-    //var inputFn = '<input type="file" id="imgupload" />' ;
-    //var uploadBtnn = '<button type="submit" id="OpenImgUpload">ID upload</button></form>'
-  //return uploadBtnn
-  return "<button class='btn btn-primary btn-sm text-right'><i class='fa fa-print' style='margin-right: 5px;'></i>Edit</button>";
-  };
+function functionCreateActionButton(cell, formatterParams, onRendered){ //plain text value
+	let htmlButton,
+			fail = {
+				blockFail : '',
+				msgFail : ''
+			};
+
+  try {
+    switch(formatterParams['type']){
+        case 'Edit':
+            htmlButton = '<button class="btn btn-primary btn-sm text-right"><i class="fa fa-print" style="margin-right: 5px;"></i>Edit</button>';
+						return htmlButton;
+        case 'Info':
+            htmlButton = '<button class="btn btn-primary btn-sm text-right"><i class="fa fa-print" style="margin-right: 5px;"></i>Edit</button>';
+            return htmlButton;
+        case 'Delete':
+            htmlButton = '<button class="btn btn-primary btn-sm text-right"><i class="fa fa-print" style="margin-right: 5px;"></i>Edit</button>';
+            return htmlButton;
+        default:
+						fail['blockFail'] = 'Creacion Error botones.';
+						fail['msgFail'] = 'Error al generar botones de Acción sobre datos en la tabla, el posible caso de cración no esta contemplado en el switch.';
+            throw fail;
+      };    
+  } catch (fail) {
+			if (typeof fail === 'object') console.error(`Error presentado en el bloque ${fail['blockFail']}, mensaje error: ${fail['msgError']}`);
+			alert('Se ha presentado un error, por favor comunicarse con SUPPORT SHILOT.');      
+			return false;
+  }  
+};
+
 const tableCliente = new Tabulator("#tabHistorialIncidencias", {
     data: arrayClientes,
     layout:"fitColumns",
@@ -25,13 +48,14 @@ const tableCliente = new Tabulator("#tabHistorialIncidencias", {
         {title:"Apellidos", field:"cliente"},
         {title:"Celular", field:"fechaIncidente"},
         {title:"Direccion", field:"estadoIncidente"},
-    {title:"ID", field: "ID" ,formatter:the_Function, align:"center",cellClick:function(e, cell){ 
-
-        //button's function for example 
-        var Btn = document.createElement('Button');
-        Btn.id = "Btn_Id";
-        console.log(Btn);
-        
-    }}
+        {title:"Editar", field: "Editar" ,width:100,formatter:functionCreateActionButton, align:"center",formatterParams:{
+            type:'Edit',
+        }},
+        {title:"Info", field: "Info" ,width:100,formatter:functionCreateActionButton, align:"center",formatterParams:{
+						type:'Info',
+        }},
+        {title:"Eliminar", field: "Eliminar" ,width:100,formatter:functionCreateActionButton, align:"center",formatterParams:{
+					type:'Delete',
+				}},
     ],
 });
