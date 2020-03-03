@@ -19,13 +19,13 @@ function functionCreateActionButton(cell, formatterParams, onRendered){ //plain 
   try {
     switch(formatterParams['type']){
         case 'Edit':
-            htmlButton = '<button class="btn btn-primary btn-sm text-right"><i class="fa fa-print" style="margin-right: 5px;"></i>Edit</button>';
+            htmlButton = '<button class="btn btn-warning btn-sm text-right" style="color: white;" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-edit"></i></button>';
 						return htmlButton;
         case 'Info':
-            htmlButton = '<button class="btn btn-primary btn-sm text-right"><i class="fa fa-print" style="margin-right: 5px;"></i>Edit</button>';
+            htmlButton = '<button class="btn btn-info btn-sm text-right"><i class="fas fa-eye"></i></button>';
             return htmlButton;
         case 'Delete':
-            htmlButton = '<button class="btn btn-primary btn-sm text-right"><i class="fa fa-print" style="margin-right: 5px;"></i>Edit</button>';
+            htmlButton = '<button class="btn btn-danger btn-sm text-right"><i class="fas fa-trash-alt"></i></button>';
             return htmlButton;
         default:
 						fail['blockFail'] = 'Creacion Error botones.';
@@ -58,4 +58,8 @@ const tableCliente = new Tabulator("#tabHistorialIncidencias", {
 					type:'Delete',
 				}},
     ],
+});
+
+$('.toastrDefaultSuccess').click(function() {
+	toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
 });
