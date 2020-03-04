@@ -15,6 +15,8 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="../../app/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
+    <!-- Toastr -->
+  <link rel="stylesheet" href="../../app/plugins/toastr/toastr.min.css">
     <!-- <link rel="stylesheet" href="../../app/plugins/jqvmap/jqvmap.min.css"> -->
     <!-- Theme style -->
     <link rel="stylesheet" href="../../app/css/adminlte/adminlte.css">
@@ -38,6 +40,8 @@
     <script src="../../app/plugins/jquery-ui/jquery-ui.min.js" defer></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script src="../../app/plugins/tabulator/js/tabulator.js" defer></script>
+    <!-- Toastr -->
+<script src="../../app/plugins/toastr/toastr.min.js" defer></script>
     <script src="../../app/js/core/historial_incidencia.js" defer></script>
     <script defer>
     $.widget.bridge('uibutton', $.ui.button)
@@ -359,8 +363,187 @@
 							<!-- /.card -->
 						</div>
         </div>
+        
         <!-- ************************************ FIN REGISTRO CLIENTES *********************************************** -->
       </div><!-- /.container-fluid -->
+      <div class="modal fade" id="modal-lg">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header" style="background-color: #629632; color: #ffffff"> 
+                <h3 class="card-title">
+                  <i class="fas fa-edit"></i>
+                  Edición Incidencia
+                </h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <!-- ************************************ INICIO REGISTRO CLIENTES *********************************************** -->
+                  <div class="row">
+                      <div class="col-md-12">
+                        <div class="card ">
+                          <div class="card-header" style="background-color: #629632; color: #ffffff">
+                            <h3 class="card-title">Información Cliente</h3>
+              
+                            <div class="card-tools">
+                              <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fas fa-minus"></i></button>
+                            </div>
+                          </div>
+                          <div class="card-body">
+                        
+                            <hr>
+                            <div class="row">
+                              <div class="col-md-2">
+
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="inputStatus">Tipo Documento:</label>
+                                    <select class="form-control custom-select">
+                                      <option selected disabled>Select one</option>
+                                      <option>On Hold</option>
+                                      <option>Canceled</option>
+                                      <option>Success</option>
+                                    </select>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="inputName">Numero Identificación:</label>
+                                  <input type="text" id="inputName" class="form-control">
+                                </div>
+                              </div>
+                              <div class="col-md-2">
+
+                              </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="inputName">Nombre Cliente</label>
+                                  <input type="text" id="inputName" class="form-control">
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="inputName">Apellido Cliente</label>
+                                  <input type="text" id="inputName" class="form-control">
+                              </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="inputName">Celular</label>
+                                  <input type="text" id="inputName" class="form-control">
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="inputName">Telefono</label>
+                                  <input type="text" id="inputName" class="form-control">
+                              </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="inputName">Correo Electronico</label>
+                                  <input type="text" id="inputName" class="form-control">
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="inputName">Direccion Cliente</label>
+                                  <input type="text" id="inputName" class="form-control">
+                              </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                      </div>
+                  </div>
+				<!-- ************************************ FIN REGISTRO CLIENTES *********************************************** -->
+                  <div class="row">
+                      <div class="col-md-12">
+                        <div class="card ">
+                          <div class="card-header" style="background-color: #629632; color: #ffffff">
+                            <h3 class="card-title"> Edición Incidencia</h3>
+              
+                            <div class="card-tools">
+                              <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fas fa-minus"></i></button>
+                            </div>
+                          </div>
+                          
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="inputName">Fecha</label>
+                                  <input type="date" id="inputName" class="form-control">
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="inputStatus">Estado</label>
+                                  <select class="form-control custom-select">
+                                    <option selected disabled>Seleccionar Estado</option>
+                                    <option>Recibido</option>
+                                    <option>En progreso</option>
+                                    <option>Finalizado</option>
+                                  </select>
+                                </div> 
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="inputStatus">Tipo de incidente</label>
+                                  <select class="form-control custom-select">
+                                    <option selected disabled>Seleccionar tipo de incidente </option>
+                                    <option>...</option>
+                                    <option>.....</option>
+                                    <option>.......</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row" style="margin-top:10px;">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="inputName">Definición del problema </label>
+                                  <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="inputName">Identificación del problema</label>
+                                  <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                              </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                          <!-- /.card-body -->
+                      </div>
+                        <!-- /.card -->
+                    </div>
+                    
+              </div>
+              <div class="modal-footer justify-content-between" style="background-color: #629632">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default toastrDefaultSuccess" data-dismiss="modal">Save changes</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
     </section>
     <!-- /.content -->
   </div>
