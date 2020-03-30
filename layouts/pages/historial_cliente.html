@@ -40,9 +40,9 @@
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script src="../../app/plugins/tabulator/js/tabulator.js" defer></script>
     <script src="../../app/js/core/historial_clientes.js" defer></script>
-    <script defer>
+    <!--<script defer>
         $.widget.bridge('uibutton', $.ui.button)
-    </script>
+    </script>-->
     <!-- Bootstrap 4 -->
     <script src="../../app/plugins/bootstrap/js/bootstrap.bundle.min.js" defer></script>
     <!-- ChartJS -->
@@ -208,7 +208,7 @@
         <div class="menu-navbar">
             <aside class="menu-navbar main-sidebar sidebar-dark-primary elevation-4">
                 <!-- Brand Logo -->
-                <a href="index3.html" class="brand-link">
+                <a href="../index.html" class="brand-link">
                     <img src="../../app/img/adminlte/AdminLTELogo.png" alt="AdminLTE Logo"
                         class="brand-image img-circle elevation-3" style="opacity: .8">
                     <span class="brand-text font-weight-light">SHILOT</span>
@@ -219,11 +219,11 @@
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
-                            <img src="../../app/img/adminlte/user2-160x160.jpg" class="img-circle elevation-2"
+                            <img src="../../app/img/adminlte/user1-128x128.jpg" class="img-circle elevation-2"
                                 alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="#" class="d-block">Alexander Pierce</a>
+                            <a href="#" class="d-block">Nicole Pearson</a>
                         </div>
                     </div>
 
@@ -232,9 +232,9 @@
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                             data-accordion="false">
                             <!-- Add icons to the links using the .nav-icon class
-                   with font-awesome or any other icon font library -->
+                           with font-awesome or any other icon font library -->
                             <li class="nav-item">
-                                <a href="./index.html" class="nav-link">
+                                <a href="../index.html" class="nav-link">
                                     <i class="nav-icon fas fa-book"></i>
                                     <p>Pagina Principal</p>
                                 </a>
@@ -250,78 +250,42 @@
                                 <ul class="nav nav-treeview">
 
                                     <li class="nav-item">
-                                        <a href="./index2.html" class="nav-link">
+                                        <a href="./registro_incidencia.html" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
-                                            <p>Dashboard v2</p>
+                                            <p>Registro Incidencia</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="./index3.html" class="nav-link">
+                                        <a href="./historial_incidencia.html" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
-                                            <p>Dashboard v3</p>
+                                            <p>Historial Incidencia</p>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="nav-item has-treeview menu-open">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-chart-pie"></i>
+                                    <i class="nav-icon ion-person-stalker"></i>
                                     <p>
-                                        Charts
+                                        Gestion de Clientes
                                         <i class="right fas fa-angle-left"></i>
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="pages/charts/chartjs.html" class="nav-link">
+                                        <a href="#" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
-                                            <p>ChartJS</p>
+                                            <p>Registrar Clientes</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="pages/charts/flot.html" class="nav-link">
+                                        <a href="./historial_cliente.html" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
-                                            <p>Flot</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/charts/inline.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Inline</p>
+                                            <p>Historial Clientes</p>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item has-treeview menu-open">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-table"></i>
-                                    <p>
-                                        Tables
-                                        <i class="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="pages/tables/simple.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Simple Tables</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/tables/data.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>DataTables</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/tables/jsgrid.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>jsGrid</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
                         </ul>
                     </nav>
                     <!-- /.sidebar-menu -->
@@ -356,16 +320,18 @@
                                             <i class="fas fa-minus"></i></button>
                                     </div>
                                 </div>
-                              
+
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="card card-primary">
                                             <div class="card-body" style="background-color: #f8f9fa;">
                                                 <form class="form-inline ml-8">
                                                     <div class="input-group input-group-sm">
-                                                        <input class="form-control form-control-navbar" type="search" placeholder="ID" aria-label="Search">
+                                                        <input class="form-control form-control-navbar" type="search"
+                                                            placeholder="ID" aria-label="Search">
                                                         <div class="input-group-append">
-                                                            <button class="btn btn-navbar" type="submit"> <i class="fas ion-person"></i></button>
+                                                            <button class="btn btn-navbar" type="submit"> <i
+                                                                    class="fas ion-person"></i></button>
                                                         </div>
                                                     </div>
                                                 </form>
