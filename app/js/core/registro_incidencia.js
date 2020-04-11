@@ -1,3 +1,19 @@
+
+const CHECK = document.querySelector('#dropdownList');
+
+
+const createInput = () =>{
+    let checkbox;
+    
+    checkbox = document.forms['access']['dropdownList'].checked ;
+    if (!checkbox) {
+        document.getElementById('showHideTechnical').style.display ='none';  
+    } else {
+        document.getElementById('showHideTechnical').style.display ='block';    
+    }
+
+}
+
 const JSON_CLIENTE_UNO = {
     nombre: 'Juan',
     apellidos: 'Alcala Sanchez',
@@ -14,17 +30,22 @@ const JSON_CLIENTE_DOS = {
     correo: 'juan@gmail.com'
 };
 
-const arrayClientes = [ JSON_CLIENTE_UNO, JSON_CLIENTE_DOS]
+const arrayClientes = [JSON_CLIENTE_UNO, JSON_CLIENTE_DOS]
 
 const tableCliente = new Tabulator("#tabCliente", {
     data: arrayClientes,
-    layout:"fitColumns",
-    height:false,
-    columns:[
-    {title:"Nombre", field:"nombre"},
-    {title:"Apellidos", field:"apellidos"},
-    {title:"Celular", field:"celular"},
-    {title:"Direccion", field:"direccion"},
-    {title:"Correo", field:"correo"},
+    layout: "fitColumns",
+    height: false,
+    columns: [
+        { title: "Nombre", field: "nombre" },
+        { title: "Apellidos", field: "apellidos" },
+        { title: "Celular", field: "celular" },
+        { title: "Direccion", field: "direccion" },
+        { title: "Correo", field: "correo" },
     ],
 });
+
+
+CHECK.addEventListener('change',() =>{
+    createInput();
+})

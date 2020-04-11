@@ -478,13 +478,38 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="inputName">Definición del problema </label>
-                        <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                        <textarea id="inputDescription" class="form-control" rows="9"></textarea>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="inputName">Identificación del problema</label>
-                        <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                        <textarea id="inputDescription" class="form-control" rows="9"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <form  name="access">
+                          <label class="btn btn-primary">
+                          <input type="checkbox" id="dropdownList" >¿ Necesita tecnico
+                          presencial ?
+                        </label>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" id = 'showHideTechnical' style = "display: none;">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="inputStatus">Tecnico presencial</label>
+                        <select class="form-control custom-select">
+                          <option selected disabled>Seleccione el tecnico presencial  </option>
+                          <option>...</option>
+                          <option>.....</option>
+                          <option>.......</option>
+                        </select>
                       </div>
                     </div>
                   </div>
