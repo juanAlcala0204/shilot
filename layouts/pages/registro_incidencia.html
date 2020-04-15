@@ -33,6 +33,7 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <!-- *********************************************** CALL TO SCRIPTS **************************************************** -->
+  <script src="../../app/js/core/api/api_registro_incidente.js" defer></script>
   <!-- jQuery -->
   <script src="../../app/plugins/jquery/jquery.min.js" defer></script>
   <!-- jQuery UI 1.11.4 -->
@@ -69,6 +70,7 @@
   <script src="../../app/js/core/dashboard.js" defer></script>
   <!-- AdminLTE for demo purposes -->
   <script src="../../app/js/adminlte/demo.js" defer></script>
+ 
 
   <!-- *********************************************** FINISH CALL TO SCRIPTS **************************************************** -->
 </head>
@@ -372,7 +374,7 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="inputName">Numero Identificación:</label>
-                        <input type="text" id="inputName" class="form-control">
+                        <input type="text" id="identificacion" class="form-control">
                       </div>
                     </div>
                     <div class="col-md-3">
@@ -465,14 +467,14 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="inputName">Fecha</label>
-                        <input type="date" id="inputName" class="form-control">
+                        <input type="date" id="fecha" class="form-control">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="inputStatus">Estado</label>
-                        <select class="form-control custom-select">
-                          <option selected disabled>Seleccionar Estado</option>
+                        <select  id= "estado" class="form-control custom-select">
+                          <option selected disabled >Seleccionar Estado</option>
                           <option>Recibido</option>
                           <option>En progreso</option>
                           <option>Finalizado</option>
@@ -482,8 +484,8 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="inputStatus">Tipo de incidente</label>
-                        <select class="form-control custom-select">
-                          <option selected disabled>Seleccionar tipo de incidente </option>
+                        <select  id = 'tipoIncidente' class="form-control custom-select">
+                          <option selected disabled >Seleccionar tipo de incidente </option>
                           <option>...</option>
                           <option>.....</option>
                           <option>.......</option>
@@ -495,13 +497,13 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="inputName">Definición del problema </label>
-                        <textarea id="inputDescription" class="form-control" rows="9"></textarea>
+                        <textarea id="definicionProblema" class="form-control" rows="9"></textarea>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="inputName">Identificación del problema</label>
-                        <textarea id="inputDescription" class="form-control" rows="9"></textarea>
+                        <textarea id="identificacionProblema" class="form-control" rows="9"></textarea>
                       </div>
                     </div>
                   </div>
@@ -542,7 +544,7 @@
 
             </div>
             <div class="col-md-3">
-              <button class="btn btn-success" style="margin: 15px;"> Registrar Incidencia</button>
+              <button class="btn btn-success" id = "registrarIncidencia"style="margin: 15px;"> Registrar Incidencia</button>
             </div>
             <div class="col-md-4">
 
