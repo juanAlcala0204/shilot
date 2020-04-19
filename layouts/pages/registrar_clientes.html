@@ -33,6 +33,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
     <!-- *********************************************** CALL TO SCRIPTS **************************************************** -->
+    <script src="../../app/js/core/api/api_registro_cliente.js" defer></script>
     <!-- jQuery -->
     <script src="../../app/plugins/jquery/jquery.min.js" defer></script>
     <!-- jQuery UI 1.11.4 -->
@@ -359,7 +360,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="inputName">Numero Identificación:</label>
-                                                <input type="text" id="inputName" class="form-control">
+                                                <input type="text" id="id" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -371,13 +372,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="inputName">Nombre Cliente</label>
-                                                <input type="text" id="inputName" class="form-control">
+                                                <input type="text" id="name" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="inputName">Apellido Cliente</label>
-                                                <input type="text" id="inputName" class="form-control">
+                                                <input type="text" id="lastName" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -385,13 +386,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="inputName">Celular</label>
-                                                <input type="text" id="inputName" class="form-control">
+                                                <input type="text" id="phone" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="inputName">Telefono</label>
-                                                <input type="text" id="inputName" class="form-control">
+                                                <input type="text" id="landline" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -399,13 +400,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="inputName">Correo Electronico</label>
-                                                <input type="text" id="inputName" class="form-control">
+                                                <input type="text" id="email" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="inputStatus">Genero</label>
-                                                <select class="form-control custom-select">
+                                                <select id= "gender" class="form-control custom-select">
                                                     <option selected disabled>Genero</option>
                                                     <option>Hombre</option>
                                                     <option>Mujer</option>
@@ -440,7 +441,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="inputName">Ciudad</label>
-                                                <select class="form-control custom-select">
+                                                <select  id= "city"class="form-control custom-select">
                                                     <option selected disabled>Seleccionar Ciudad</option>
                                                     <option>Medellín</option>
                                                     <option>....</option>
@@ -451,7 +452,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="inputStatus">Dirección</label>
-                                                <input type="text" id="inputaddress" class="form-control">
+                                                <input type="text" id="address" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -459,7 +460,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="inputName">Pais </label>
-                                                <select class="form-control custom-select">
+                                                <select  id = "country"class="form-control custom-select">
                                                     <option selected disabled>Seleccionar Pais</option>
                                                     <option>Colombia</option>
                                                     <option>....</option>
@@ -470,7 +471,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="inputName">Departamento</label>
-                                                <select class="form-control custom-select">
+                                                <select id ="department" class="form-control custom-select">
                                                     <option selected disabled>Seleccionar Departamento</option>
                                                     <option>Antioquia</option>
                                                     <option>....</option>
@@ -491,7 +492,7 @@
 
                         </div>
                         <div class="col-md-3">
-                            <button class="btn btn-success" style="margin: 15px;" > Registrar Cliente</button>
+                            <button  id= "registrarCliente"class="btn btn-success" style="margin: 15px;" > Registrar Cliente</button>
                         </div>
                         <div class="col-md-4">
 
