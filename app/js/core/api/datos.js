@@ -6,20 +6,19 @@ class Datos {
     }
     DataCliente() {
         this.clients = {
-            idUsuario: parseInt((Math.random() * 1000), 10),
-            nombreUsuario: document.getElementById('id').value,
-            apellidoUsuario: document.getElementById('name').value,
-            emailUsuario: document.getElementById('lastName').value,
+            idUsuario: document.getElementById('id').value,
+            nombreUsuario: document.getElementById('name').value,
+            apellidoUsuario: document.getElementById('lastName').value,
+            emailUsuario: document.getElementById('email').value,
             celularUsuario: document.getElementById('phone').value,
             telefonoUsuario: document.getElementById('landline').value,
-            generoUsuario: document.getElementById('email').value,
-            idTipoUsuario: document.getElementById('gender').value,
+            generoUsuario: document.getElementById('gender').value,
+            idTipoUsuario: "Cliente",
             idResidenciaUsuario: parseInt((Math.random() * 1000), 10),
-            direccion: document.getElementById('city').value,
-            ciudad: document.getElementById('address').value,
+            direccion: document.getElementById('address').value,
+            ciudad: document.getElementById('city').value,
             pais: document.getElementById('country').value,
             departamento: document.getElementById('department').value,
-            idUsuario: document.getElementById('id').value
         };
         return this.clients;
     };

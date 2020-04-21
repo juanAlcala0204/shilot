@@ -1,21 +1,18 @@
-const ADDINCIDENT = document.querySelector('#registrarIncidencia');
-const ADDCLIENT = document.querySelector('#registrarCliente');
+function registrarIncidencia(){
+    const  ADD = new Servicio('incidente');
+    ADD.AgregarIncidente();
+    reload();
+}
 
-
-ADDCLIENT.addEventListener('click', () => {
+function registrarCliente (){
     const ADD = new Servicio('cliente');
     ADD.AgregarCliente();  
     reload(); 
-});
+}
 
-ADDINCIDENT.addEventListener('click', () => {
-    const  ADD = new Servicio('incidente');
-     ADD.AgregarIncidente();
-     reload();
- });
-
- function reload(){
+function reload(){
     setTimeout(() => {
         document.location.reload();
-    }, 1000);
+    }, 500)
 }
+

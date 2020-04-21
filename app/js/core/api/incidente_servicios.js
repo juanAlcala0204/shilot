@@ -13,10 +13,10 @@ class Incidente extends Datos{
             headers: {
                 'Content-Type': 'application/json'
             },
-            mode: 'cors'
+            mode: 'cors',
         };
         try {
-            response = await fetch('http://localhost:3000/comments', SETTINGS);
+            response = await fetch('http://localhost:3000/Incidentes', SETTINGS);
             data = await response.json()
             return data;
 
@@ -25,4 +25,5 @@ class Incidente extends Datos{
             console.log(error);
         }
     }
+
 }

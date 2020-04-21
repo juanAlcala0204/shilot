@@ -1,13 +1,27 @@
-
-const arrayClientes = [ 
-    { tipoIncidencia: 'ERROR DESARROLLO', cliente: 'Juan David Alcala', fechaIncidente: '23/12/2020', estadoIncidente: 'En proceso...'},
-    { tipoIncidencia: 'ERROR DESARROLLO', cliente: 'Juan David Alcala', fechaIncidente: '23/12/2020', estadoIncidente: 'En proceso...'},
-    { tipoIncidencia: 'ERROR DESARROLLO', cliente: 'Juan David Alcala', fechaIncidente: '23/12/2020', estadoIncidente: 'En proceso...'},
-    { tipoIncidencia: 'ERROR DESARROLLO', cliente: 'Juan David Alcala', fechaIncidente: '23/12/2020', estadoIncidente: 'En proceso...'},
-    { tipoIncidencia: 'ERROR DESARROLLO', cliente: 'Juan David Alcala', fechaIncidente: '23/12/2020', estadoIncidente: 'En proceso...'},
-    { tipoIncidencia: 'ERROR DESARROLLO', cliente: 'Juan David Alcala', fechaIncidente: '23/12/2020', estadoIncidente: 'En proceso...'},
-    { tipoIncidencia: 'ERROR DESARROLLO', cliente: 'Juan David Alcala', fechaIncidente: '23/12/2020', estadoIncidente: 'En proceso...'},
-];
+const tableCliente = new Tabulator("#tabHistorialIncidencias", {
+    ajaxURL:"http://localhost:3000/Incidentes",
+    layout:"fitColumns",
+    height:false,
+    pagination: "local",
+    paginationSize: 10,
+    movableColumns: true,
+    resizableRows: true,
+    columns:[
+        {title:"Id", field:"idIncidencia" },
+        {title:"Fecha de captura", field:"fechaCapturaIncidente"},
+        {title:"Cliente", field:"idUsuario"},
+        {title:"Estado", field:"estadoIncidente"},
+        {title:"Editar", field: "Editar" ,width:100,formatter:functionCreateActionButton, align:"center",formatterParams:{
+            type:'Edit',
+        }},
+        {title:"Info", field: "Info" ,width:100,formatter:functionCreateActionButton, align:"center",formatterParams:{
+						type:'Info',
+        }},
+        {title:"Eliminar", field: "Eliminar" ,width:100,formatter:functionCreateActionButton, align:"center",formatterParams:{
+					type:'Delete',
+				}},
+    ],
+});
 
 function functionCreateActionButton(cell, formatterParams, onRendered){ //plain text value
 	let htmlButton,
@@ -38,27 +52,6 @@ function functionCreateActionButton(cell, formatterParams, onRendered){ //plain 
 			return false;
   }  
 };
-
-const tableCliente = new Tabulator("#tabHistorialIncidencias", {
-    data: arrayClientes,
-    layout:"fitColumns",
-    height:false,
-    columns:[
-        {title:"Nombre", field:"tipoIncidencia"},
-        {title:"Apellidos", field:"cliente"},
-        {title:"Celular", field:"fechaIncidente"},
-        {title:"Direccion", field:"estadoIncidente"},
-        {title:"Editar", field: "Editar" ,width:100,formatter:functionCreateActionButton, align:"center",formatterParams:{
-            type:'Edit',
-        }},
-        {title:"Info", field: "Info" ,width:100,formatter:functionCreateActionButton, align:"center",formatterParams:{
-						type:'Info',
-        }},
-        {title:"Eliminar", field: "Eliminar" ,width:100,formatter:functionCreateActionButton, align:"center",formatterParams:{
-					type:'Delete',
-				}},
-    ],
-});
 
 $('.toastrDefaultSuccess').click(function() {
 	toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')

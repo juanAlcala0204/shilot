@@ -19,7 +19,7 @@ class Cliente extends Datos {
         };
 
         try{
-        response = await fetch('http://localhost:3000/posts', SETTINGS);
+        response = await fetch('http://localhost:3000/Clientes', SETTINGS);
         data = await response.json()
         return data;
         }catch(error){
