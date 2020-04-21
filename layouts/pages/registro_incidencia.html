@@ -33,14 +33,15 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <!-- *********************************************** CALL TO SCRIPTS **************************************************** -->
-  <script src="../../app/js/core/api/api_registro_incidente.js" defer></script>
+  <!---------------------JS Global------------------------->
+  <script src="../../app/js/core/global.js" defer></script>
   <!-- jQuery -->
   <script src="../../app/plugins/jquery/jquery.min.js" defer></script>
   <!-- jQuery UI 1.11.4 -->
   <script src="../../app/plugins/jquery-ui/jquery-ui.min.js" defer></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script src="../../app/plugins/tabulator/js/tabulator.js" defer></script>
-  <script src="../../app/js/core/registro_incidencia.js" defer></script>
+  <script src="../../app/js/core/event/registro_incidencia.js" defer></script>
   <script defer>
     $.widget.bridge('uibutton', $.ui.button)
   </script>
@@ -70,16 +71,14 @@
   <script src="../../app/js/core/dashboard.js" defer></script>
   <!-- AdminLTE for demo purposes -->
   <script src="../../app/js/adminlte/demo.js" defer></script>
+  <!----------------Services--------------------------->
+  <script src="../../app/js/core/api/servicios.js" defer></script>
+  <!----------------------Data---------------------------------->
+  <script src="../../app/js/core/api/datos.js" defer></script>
+  <!------------------------Services Incident-------------------------->
+  <script src="../../app/js/core/api/incidente_servicios.js" defer></script>
 
-  <script src="../../app/js/core/global.js" defer></script>
 
-    <!----------------Services--------------------------->
-    <script src="../../app/js/core/api/servicios.js"defer></script>
-    <script src="../../app/js/core/api/datos.js"defer></script>
-    
-    <script src="../../app/js/core/api/incidente_servicios.js"defer></script>
-
-  
 
 
   <!-- *********************************************** FINISH CALL TO SCRIPTS **************************************************** -->
@@ -539,9 +538,8 @@
                         <label for="inputStatus">Tecnico presencial</label>
                         <select class="form-control custom-select">
                           <option selected disabled>Seleccione el tecnico presencial </option>
-                          <option>..................</option>
-                          <option>..........</option>
-                          <option>.........</option>
+                          <option>Alejandro Vera Quintero</option>
+                          <option>Juan David Alcala</option>
                         </select>
                       </div>
                     </div>
