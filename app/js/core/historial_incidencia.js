@@ -13,11 +13,11 @@ const tabCliente = new Tabulator("#tabHistorialIncidencias", {
         { title: "Identificion del problema ", field: "identificacionProblema" },
         { title: "Cliente", field: "idUsuario" },
         { title: "Estado", field: "estadoIncidente" },
-        {
-            title: "Editar", field: "Editar", width: 100, formatter: functionCreateActionButton, align: "center", formatterParams: {
-                type: 'Edit',
-            }
-        },
+        // {
+        //     title: "Editar", field: "Editar", width: 100, formatter: functionCreateActionButton, align: "center", formatterParams: {
+        //         type: 'Edit',
+        //     }
+        // },
         {
             title: "Info", field: "idIncidencia", width: 100, formatter: functionCreateActionButton, align: "center", formatterParams: {
                 type: 'Info',
