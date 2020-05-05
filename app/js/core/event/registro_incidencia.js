@@ -2,7 +2,7 @@
 const CHECK = document.querySelector('#dropdownList');
 const BUTTON = document.querySelector('#registrarIncidencia');
 const IDCLIENT = document.querySelector('#id');
-
+const ADDRESS  = document.querySelector('#buttonAddress');
 const createInput = () => {
     try {
         let checkbox;
@@ -28,7 +28,6 @@ const tableClient = new Tabulator("#tabCliente", {
         { title: "Nombre", field: "nombreUsuario" },
         { title: "Apellidos", field: "apellidoUsuario" },
         { title: "Celular", field: "celularUsuario" },
-        { title: "Direccion", field: "direccion" },
         { title: "Correo", field: "emailUsuario" },
     ],
 });
@@ -41,6 +40,7 @@ CHECK.addEventListener('change', () => {
 IDCLIENT.addEventListener('change', () => {
     let param;
     let dataClient;
+    let url;
     param = document.getElementById('id').value;
     if (param == "") {
         document.getElementById('tipoId').value = "";
@@ -60,7 +60,8 @@ IDCLIENT.addEventListener('change', () => {
                 document.getElementById('email').value = data[0].emailUsuario
                 document.getElementById('phone').value = data[0].celularUsuario
                 document.getElementById('landline').value = data[0].telefonoUsuario
-            })
+            });
+           
         }catch (error){
             MessageError();
         }
@@ -73,4 +74,29 @@ BUTTON.addEventListener('click', () => {
     MessageAdd('Incidente');
     cleanFieldsIncidents();
 
+});
+
+ADDRESS.addEventListener('click',() =>{
+    url = new URL('http://localhost:3000/Residencia');
+    url.search = new URLSearchParams({
+        idUsuario: document.getElementById('id').value
+    })
+    const tablaResidencia = new Tabulator("#tabAddress", {
+        ajaxURL: url,
+        layout: "fitColumns",
+        paginationSize: 10,
+        movableColumns: true,
+        resizableRows: true,
+        columns: [
+            { title: "ID Residencia", field: "idResidenciaUsuario" },
+            { title: "Dirección", field: "direccion", cellClick: function (e, cell) {
+                document.getElementById('address').value = cell.getValue()
+            }},
+            { title: "Ciudad", field: "ciudad" },
+            { title: "Pais", field: "pais" },
+            { title: "Departamento", field: "departamento" }
+        ],
+        rowClick:function(e, row){                
+        }
+    });
 });
