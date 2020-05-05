@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="../../app/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
   <!-- <link rel="stylesheet" href="../../app/plugins/jqvmap/jqvmap.min.css"> -->
+  <!-- Toastr -->
+  <link rel="stylesheet" href="../../app/plugins/toastr/toastr.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../app/css/adminlte/adminlte.css">
   <!-- overlayScrollbars -->
@@ -33,6 +35,8 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <!-- *********************************************** CALL TO SCRIPTS **************************************************** -->
+  <!---------------------JS Global------------------------->
+  <script src="../../app/js/core/global.js" defer></script>
   <!-- jQuery -->
   <script src="../../app/plugins/jquery/jquery.min.js" defer></script>
   <!-- jQuery UI 1.11.4 -->
@@ -43,6 +47,8 @@
   <!--<script defer>
         $.widget.bridge('uibutton', $.ui.button)
     </script>-->
+    <!-- Toastr -->
+  <script src="../../app/plugins/toastr/toastr.min.js" defer></script>
   <!-- Bootstrap 4 -->
   <script src="../../app/plugins/bootstrap/js/bootstrap.bundle.min.js" defer></script>
   <!-- ChartJS -->
@@ -289,7 +295,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="./registrar_clientes.html" class="nav-link">
+                    <a href="./registro_cliente.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Registrar Clientes</p>
                     </a>
@@ -343,10 +349,10 @@
                       <div class="card-body" style="background-color: #f8f9fa;">
                         <form class="form-inline ml-8">
                           <div class="input-group input-group-sm">
-                            <input class="form-control form-control-navbar" id ="inputSearch" type="text" placeholder="Identificación"
-                              aria-label="Search">
+                            <input class="form-control form-control-navbar" id="inputSearch" type="text"
+                              placeholder="Identificación" aria-label="Search">
                             <div class="input-group-append">
-                              <button class="btn btn-primary" id ="search" type="button">
+                              <button class="btn btn-primary" id="search" type="button">
                                 <i class="fas fa-search"></i>
                               </button>
                             </div>
@@ -369,25 +375,44 @@
               <!-- /.card -->
             </div>
           </div>
+
           <!-- ************************************ FIN REGISTRO CLIENTES *********************************************** -->
         </div><!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
+        <div class="modal fade" id="modal-address">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header bg-success" style="color: #ffffff">
+                <h3 class="card-title">
+                  <i class="fas fa-edit"></i>
+                  Recidencia
+                </h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div id="tabResidencia"></div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer justify-content-between bg-success">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
     </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-      All rights reserved.
-      <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.0.2
-      </div>
-    </footer>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
   </div>
 
 

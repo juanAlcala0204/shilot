@@ -35,21 +35,17 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <!-- *********************************************** CALL TO SCRIPTS **************************************************** -->
-  
 
+  <!---------------------JS Global------------------------->
+  <script src="../../app/js/core/global.js" defer></script>
   <!-- jQuery -->
   <script src="../../app/plugins/jquery/jquery.min.js" defer></script>
   <!-- jQuery UI 1.11.4 -->
   <script src="../../app/plugins/jquery-ui/jquery-ui.min.js" defer></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script src="../../app/plugins/tabulator/js/tabulator.js" defer></script>
-  <!----------------Services--------------------------->
-  <script src="../../app/js/core/api/servicios.js"defer></script>
-  <script src="../../app/js/core/api/datos.js"defer></script>
-  <script src="../../app/js/core/api/incidente_servicios.js"defer></script>
   <!-- Toastr -->
   <script src="../../app/plugins/toastr/toastr.min.js" defer></script>
-  <script src="../../app/js/core/historial_incidencia.js" defer></script>
   <script defer>
     $.widget.bridge('uibutton', $.ui.button)
   </script>
@@ -79,10 +75,17 @@
   <script src="../../app/js/core/dashboard.js" defer></script>
   <!-- AdminLTE for demo purposes -->
   <script src="../../app/js/adminlte/demo.js" defer></script>
+  <!----------------Services--------------------------->
+  <script src="../../app/js/core/api/servicios.js" defer></script>
+  <!----------------------Data---------------------------------->
+  <script src="../../app/js/core/api/datos.js" defer></script>
+  <!------------------------Services-------------------------->
+  <script src="../../app/js/core/api/incidente_servicios.js" defer></script>
+  <script src="../../app/js/core/api/cliente_servicios.js" defer></script>
+  <!--------------------------Historial Incidencia-------------------->
+  <script src="../../app/js/core/historial_incidencia.js" defer></script>
 
   
-
-
   <!-- *********************************************** FINISH CALL TO SCRIPTS **************************************************** -->
 </head>
 
@@ -91,7 +94,7 @@
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      
+
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
@@ -123,7 +126,8 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="../../app/img/adminlte/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                <img src="../../app/img/adminlte/user1-128x128.jpg" alt="User Avatar"
+                  class="img-size-50 mr-3 img-circle">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     Brad Diesel
@@ -139,7 +143,8 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="../../app/img/adminlte/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <img src="../../app/img/adminlte/user8-128x128.jpg" alt="User Avatar"
+                  class="img-size-50 img-circle mr-3">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     John Pierce
@@ -155,7 +160,8 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="../../app/img/adminlte/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <img src="../../app/img/adminlte/user3-128x128.jpg" alt="User Avatar"
+                  class="img-size-50 img-circle mr-3">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     Nora Silvester
@@ -299,7 +305,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="./registrar_clientes.html" class="nav-link">
+                    <a href="./registro_cliente.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Registrar Clientes</p>
                     </a>
@@ -365,7 +371,7 @@
         <div class="modal fade" id="modal-lg">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
-              <div class="modal-header" style="background-color: #629632; color: #ffffff">
+              <div class="modal-header bg-warning" style="color: #ffffff">
                 <h3 class="card-title">
                   <i class="fas fa-edit"></i>
                   Edición Incidencia
@@ -379,7 +385,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="card ">
-                      <div class="card-header" style="background-color: #629632; color: #ffffff">
+                      <div class="card-header bg-warning" style=" color: #ffffff">
                         <h3 class="card-title">Información Cliente</h3>
 
                         <div class="card-tools">
@@ -400,9 +406,10 @@
                               <label for="inputStatus">Tipo Documento:</label>
                               <select class="form-control custom-select">
                                 <option selected disabled>Select one</option>
-                                <option>On Hold</option>
-                                <option>Canceled</option>
-                                <option>Success</option>
+                                <option>Tarjeta de identidad</option>
+                                <option>Cédula de ciudadanía</option>
+                                <option>Cédula de Extranjería</option>
+                                <option>Contraseña registraduria</option>
                               </select>
                             </div>
                           </div>
@@ -469,7 +476,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="card ">
-                      <div class="card-header" style="background-color: #629632; color: #ffffff">
+                      <div class="card-header bg-warning" style="color: #ffffff">
                         <h3 class="card-title"> Edición Incidencia</h3>
 
                         <div class="card-tools">
@@ -503,9 +510,9 @@
                               <label for="inputStatus">Tipo de incidente</label>
                               <select class="form-control custom-select">
                                 <option selected disabled>Seleccionar tipo de incidente </option>
-                                <option>...</option>
-                                <option>.....</option>
-                                <option>.......</option>
+                                <option>Software</option>
+                                <option>Red</option>
+                                <option>Hardware</option>
                               </select>
                             </div>
                           </div>
@@ -532,7 +539,7 @@
                 </div>
 
               </div>
-              <div class="modal-footer justify-content-between" style="background-color: #629632">
+              <div class="modal-footer justify-content-between bg-warning">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-default toastrDefaultSuccess" data-dismiss="modal">Save
                   changes</button>
@@ -542,19 +549,191 @@
           </div>
           <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal -->
+        <!-------------------------------------------modal-info----------------------->
+        <div class="modal fade" id="modal-info">
+          <div class="modal-dialog modal-lg ">
+            <div class="modal-content">
+              <div class="modal-header bg-info" style=" color: #ffffff">
+                <h3 class="card-title">
+                  <i class="fas fa-eye"></i>
+                  Informacion De Incidencia
+                </h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- ************************************ INICIO REGISTRO CLIENTES *********************************************** -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card ">
+                      <div class="card-header bg-info" style=" color: #ffffff">
+                        <h3 class="card-title">Información Cliente</h3>
+
+                        <div class="card-tools">
+                          <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                            title="Collapse">
+                            <i class="fas fa-minus"></i></button>
+                        </div>
+                      </div>
+                      <div class="card-body">
+
+                        <hr>
+                        <div class="row">
+                          <div class="col-md-2">
+
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="inputStatus">Tipo Documento:</label>
+                              <select class="form-control custom-select" id="infoTypeId" disabled>
+                                <option selected>Seleccionar tipo de Documento</option>
+                                <option>Tarjeta de identidad</option>
+                                <option>Cédula de ciudadanía</option>
+                                <option>Cédula de Extranjería</option>
+                                <option>Contraseña registraduria</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="inputName">Numero Identificación:</label>
+                              <input type="text" id="infoId" class="form-control" disabled>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="inputName">Nombre Cliente</label>
+                              <input type="text" id="infoName" class="form-control" disabled>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="inputName">Apellido Cliente</label>
+                              <input type="text" id="infoLastName" class="form-control" disabled>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="inputName">Celular</label>
+                              <input type="text" id="infoPhone" class="form-control" disabled>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="inputName">Telefono</label>
+                              <input type="text" id="infoLandline" class="form-control" disabled>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="inputName">Correo Electronico</label>
+                              <input type="text" id="infoEmail" class="form-control" disabled>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="inputName">Direccion Cliente</label>
+                              <input type="text" id="infoAddress" class="form-control" disabled>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                </div>
+                <!-- ************************************ FIN REGISTRO CLIENTES *********************************************** -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card ">
+                      <div class="card-header bg-info" style=" color: #ffffff">
+                        <h3 class="card-title"> Incidencia</h3>
+
+                        <div class="card-tools">
+                          <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                            title="Collapse">
+                            <i class="fas fa-minus"></i></button>
+                        </div>
+                      </div>
+
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="inputName">Fecha</label>
+                              <input type="date" id="infoDate" class="form-control" disabled>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="inputStatus">Estado</label>
+                              <select class="form-control custom-select" disabled id="infoState">
+                                <option selected disabled>Seleccionar Estado</option>
+                                <option>Recibido</option>
+                                <option>En progreso</option>
+                                <option>Finalizado</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="inputStatus">Tipo de incidente</label>
+                              <select class="form-control custom-select" disabled id="infoTypeIncident">
+                                <option selected disabled>Seleccionar tipo de incidente </option>
+                                <option>Software</option>
+                                <option>Red</option>
+                                <option>Hardware</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row" style="margin-top:10px;">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="inputName">Definición del problema </label>
+                              <textarea id="infoDefinition" class="form-control" rows="10" disabled></textarea>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="inputName">Identificación del problema</label>
+                              <textarea id="infoIdentification" class="form-control" rows="10" disabled></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+                </div>
+
+              </div>
+              <div class="modal-footer justify-content-between bg-info">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+        </div>
+        
       </section>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-      All rights reserved.
-      <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.0.2
-      </div>
-    </footer>
-
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
       <!-- Control sidebar content goes here -->

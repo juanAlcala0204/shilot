@@ -1,11 +1,12 @@
-class Datos {
+class Data {
     constructor(){
         this.clients;
         this.incidents;
         this.address;
     }
-    DataCliente() {
+    DataClient() {
         this.clients = {
+            tipoId : document.getElementById('tipoId').value,
             idUsuario: document.getElementById('id').value,
             nombreUsuario: document.getElementById('name').value,
             apellidoUsuario: document.getElementById('lastName').value,
@@ -14,16 +15,11 @@ class Datos {
             telefonoUsuario: document.getElementById('landline').value,
             generoUsuario: document.getElementById('gender').value,
             idTipoUsuario: "Cliente",
-            idResidenciaUsuario: parseInt((Math.random() * 1000), 10),
-            direccion: document.getElementById('address').value,
-            ciudad: document.getElementById('city').value,
-            pais: document.getElementById('country').value,
-            departamento: document.getElementById('department').value,
         };
         return this.clients;
     };
 
-    DataIncidente() {
+    DataIncident() {
         this.incidents = {
             idIncidencia: parseInt((Math.random() * 1000), 10),
             fechaCapturaIncidente: document.getElementById('date').value,
@@ -31,9 +27,11 @@ class Datos {
             identificacionProblema: document.getElementById('identificationProblem').value,
             finalizacionIncidente: "0",
             diasIncidente: "0",
+            direccionCliente:document.getElementById('address').value,
             estadoIncidente: document.getElementById('state').value,
             idUsuario: document.getElementById('id').value,
-            tipoIncidente: document.getElementById('indenceType').value
+            tipoIncidente: document.getElementById('indenceType').value,
+            tecnico:document.getElementById('idTecnico').value 
         }
         return this.incidents;
     };
@@ -41,8 +39,8 @@ class Datos {
     DataAddress() {
         this.address = {
             idResidenciaUsuario: parseInt((Math.random() * 1000), 10),
-            direccion: document.getElementById('city').value,
-            ciudad: document.getElementById('address').value,
+            direccion: document.getElementById('address').value,
+            ciudad: document.getElementById('city').value,
             pais: document.getElementById('country').value,
             departamento: document.getElementById('department').value,
             idUsuario: document.getElementById('id').value
