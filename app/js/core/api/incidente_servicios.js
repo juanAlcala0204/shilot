@@ -1,15 +1,15 @@
-class Incidente extends Datos{
+class Incident extends Data{
     constructor(){
         super();
-        this.incidente = this.DataIncidente() ;
     }
 
-    async AgregarIncidente(){
+    async AddIncident(){
         let response;
         let data;
+        const INCIDENTE = this.DataIncident() ;
         const SETTINGS = {
             method: 'POST',
-            body: JSON.stringify(this.incidente),
+            body: JSON.stringify(INCIDENTE),
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -23,6 +23,29 @@ class Incidente extends Datos{
 
         } catch (error) {
             console.log(error);
+        }
+    }
+    async SearchIncident(params) {
+        let url ;
+        let response;
+        let data;
+        url= new URL('http://localhost:3000/Incidentes')
+        url.search = new URLSearchParams({
+            idIncidencia: params
+        })
+        const SETTINGS = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            mode: 'cors'
+        };
+        try {
+            response = await fetch(url, SETTINGS);
+            data = await response.json();
+            return data;
+        } catch (error) {
+            console.log(error)
         }
     }
 

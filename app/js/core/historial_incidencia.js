@@ -1,58 +1,68 @@
-const tableCliente = new Tabulator("#tabHistorialIncidencias", {
-    ajaxURL:"http://localhost:3000/Incidentes",
-    layout:"fitColumns",
-    height:false,
+
+const tabCliente = new Tabulator("#tabHistorialIncidencias", {
+    ajaxURL: "http://localhost:3000/Incidentes",
+    layout: "fitColumns",
+    height: false,
     pagination: "local",
     paginationSize: 10,
     movableColumns: true,
     resizableRows: true,
-    columns:[
-        {title:"Id", field:"idIncidencia" },
-        {title:"Fecha de captura", field:"fechaCapturaIncidente"},
-        {title:"Cliente", field:"idUsuario"},
-        {title:"Estado", field:"estadoIncidente"},
-        {title:"Editar", field: "Editar" ,width:100,formatter:functionCreateActionButton, align:"center",formatterParams:{
-            type:'Edit',
-        }},
-        {title:"Info", field: "Info" ,width:100,formatter:functionCreateActionButton, align:"center",formatterParams:{
-						type:'Info',
-        }},
-        {title:"Eliminar", field: "Eliminar" ,width:100,formatter:functionCreateActionButton, align:"center",formatterParams:{
-					type:'Delete',
-				}},
+    columns: [
+        { title: "Fecha de captura", field: "fechaCapturaIncidente" },
+        { title: "Definicion", field: "definicionProblema", },
+        { title: "Identificion del problema ", field: "identificacionProblema" },
+        { title: "Cliente", field: "idUsuario" },
+        { title: "Estado", field: "estadoIncidente" },
+        {
+            title: "Editar", field: "Editar", width: 100, formatter: functionCreateActionButton, align: "center", formatterParams: {
+                type: 'Edit',
+            }
+        },
+        {
+            title: "Info", field: "idIncidencia", width: 100, formatter: functionCreateActionButton, align: "center", formatterParams: {
+                type: 'Info',
+            }, cellClick: function (e, cell) {
+                CreacionInformacion(cell.getValue());
+            },
+        },
     ],
 });
 
-function functionCreateActionButton(cell, formatterParams, onRendered){ //plain text value
-	let htmlButton,
-			fail = {
-				blockFail : '',
-				msgFail : ''
-			};
 
-  try {
-    switch(formatterParams['type']){
-        case 'Edit':
-            htmlButton = '<button class="btn btn-warning btn-sm text-right" style="color: white;" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-edit"></i></button>';
-						return htmlButton;
-        case 'Info':
-            htmlButton = '<button class="btn btn-info btn-sm text-right"><i class="fas fa-eye"></i></button>';
-            return htmlButton;
-        case 'Delete':
-            htmlButton = '<button class="btn btn-danger btn-sm text-right"><i class="fas fa-trash-alt"></i></button>';
-            return htmlButton;
-        default:
-						fail['blockFail'] = 'Creacion Error botones.';
-						fail['msgFail'] = 'Error al generar botones de Acción sobre datos en la tabla, el posible caso de cración no esta contemplado en el switch.';
-            throw fail;
-      };    
-  } catch (fail) {
-			if (typeof fail === 'object') console.error(`Error presentado en el bloque ${fail['blockFail']}, mensaje error: ${fail['msgError']}`);
-			alert('Se ha presentado un error, por favor comunicarse con SUPPORT SHILOT.');      
-			return false;
-  }  
-};
+const CreacionInformacion = (id) => {
+    try {
+        const SEARCH = new Services('incident');
+        const INCIDENT = SEARCH.SearchIncident(id);
+        INCIDENT.then(data => {
+            document.getElementById('infoId').value = data[0].idUsuario;
+            document.getElementById('infoState').value = data[0].estadoIncidente;
+            document.getElementById('infoDefinition').value = data[0].definicionProblema;
+            document.getElementById('infoTypeIncident').value = data[0].tipoIncidente;
+            document.getElementById('infoIdentification').value = data[0].identificacionProblema;
+            document.getElementById('infoDate').value = data[0].fechaCapturaIncidente;
+        });
+        const DATACLIENT = new Services('client');
+        const CLIENT = DATACLIENT.SearchClient(document.getElementById('infoId').value);
+        CLIENT.then(dataClient => {
+           document.getElementById('infoTypeId').value = dataClient[0].tipoId;
+            document.getElementById('infoName').value = dataClient[0].nombreUsuario;
+            document.getElementById('infoLastName').value = dataClient[0].apellidoUsuario;
+            document.getElementById('infoPhone').value = dataClient[0].celularUsuario;
+            document.getElementById('infoLandline').value = dataClient[0].telefonoUsuario;
+            document.getElementById('infoEmail').value = dataClient[0].emailUsuario;
+            document.getElementById('infoAddress').value = 0
+        })
 
-$('.toastrDefaultSuccess').click(function() {
-	toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+
+
+    } catch (error) {
+        console.log(error);
+        MessageError();
+    }
+
+}
+
+
+$('.toastrDefaultSuccess').click(function () {
+    toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
 });

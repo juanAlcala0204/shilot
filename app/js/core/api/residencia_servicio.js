@@ -1,17 +1,16 @@
-
-class Client extends Data{
+class Address extends Data {
 
     constructor() {
         super();
     }
 
-    async AddClients() {
+    async AddAddress() {
         let response;
         let data;
-        const CLIENTE = this.DataClient();
+        const ADDRESS = this.DataAddress();
         const SETTINGS = {
             method: 'POST',
-            body: JSON.stringify(CLIENTE),
+            body: JSON.stringify(ADDRESS),
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -19,7 +18,7 @@ class Client extends Data{
         };
 
         try {
-            response = await fetch('http://localhost:3000/Usuarios', SETTINGS);
+            response = await fetch('http://localhost:3000/Residencia', SETTINGS);
             data = await response.json();
             return data;
         } catch (error) {
@@ -27,13 +26,13 @@ class Client extends Data{
         }
     }
 
-    async SearchClient(params) {
+    async SearchAddress(params) {
         let url ;
         let response;
         let data;
-        url= new URL('http://localhost:3000/Usuarios')
+        url= new URL('http://localhost:3000/Residencia')
         url.search = new URLSearchParams({
-            idUsuario: params
+            idUsuario : params
         })
         const SETTINGS = {
             method: 'GET',
@@ -51,5 +50,26 @@ class Client extends Data{
         }
     }
 
+    async AddAddressAll(obj) {
+        let response;
+        let data;
+        const ADDRESS = obj;
+        const SETTINGS = {
+            method: 'POST',
+            body: JSON.stringify(ADDRESS),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            mode: 'cors'
+        };
+
+        try {
+            response = await fetch('http://localhost:3000/Residencia', SETTINGS);
+            data = await response.json();
+            return data;
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
 

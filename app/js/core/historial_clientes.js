@@ -1,24 +1,8 @@
 const BUTTONSEARCH = document.querySelector('#search');
 const INPUTNULL = document.getElementById('inputSearch');
 
-var the_Function = function (cell, formatterParams, onRendered) { //plain text value
-    return "<button class='btn btn-primary btn-sm text-right'><i class='fa fa-print' style='margin-right: 5px;'></i>Edit</button>";
-};
-
-const updateFilter =(search) =>{
-    let filterVal = 'idUsuario';
-    let typeVal = '=';
-  
-    let filter = filterVal == "function" ? customFilter : filterVal;
-  
-    if(filterVal){
-        tableCliente.setFilter(filter,typeVal, search);
-    }
-  }
-
-  
 const tableCliente = new Tabulator("#tabHistorialIncidencias", {
-    ajaxURL:"http://localhost:3000/Clientes",
+    ajaxURL: "http://localhost:3000/Usuarios?idTipoUsuario: Cliente",
     layout: "fitColumns",
     pagination: "local",
     paginationSize: 10,
@@ -31,27 +15,57 @@ const tableCliente = new Tabulator("#tabHistorialIncidencias", {
         { title: "Correo", field: "emailUsuario" },
         { title: "Telefono", field: "telefonoUsuario" },
         { title: "Celular", field: "celularUsuario" },
-        { title: "Direccion", field: "direccion" },
         {
-            title: "imprimir", field: "imprimir", formatter: the_Function, align: "center", cellClick: function (e, cell) {
-
-                //button's function for example 
-                var Btn = document.createElement('Button');
-                Btn.id = "Btn_Id";
-                console.log(Btn);
-
+            title: "Dirección", field: "idUsuario", formatter: the_Function, align: "center"
+            , cellClick: function (e, cell) {
+                url = new URL('http://localhost:3000/Residencia');
+                url.search = new URLSearchParams({
+                    idUsuario: cell.getValue()
+                })
+                const tablaResidencia = new Tabulator("#tabResidencia", {
+                    ajaxURL: url,
+                    layout: "fitColumns",
+                    paginationSize: 10,
+                    movableColumns: true,
+                    resizableRows: true,
+                    columns: [
+                        { title: "ID Residencia", field: "idResidenciaUsuario" },
+                        { title: "Dirección", field: "direccion" },
+                        { title: "Ciudad", field: "ciudad" },
+                        { title: "Pais", field: "pais" },
+                        { title: "Departamento", field: "departamento" }
+                    ],
+                });
             }
+
         }
     ],
 });
 
-BUTTONSEARCH.addEventListener('click', () =>{
+
+const updateFilter = (search) => {
+    try {
+        let filterVal = 'idUsuario';
+        let typeVal = '=';
+
+        let filter = filterVal == "function" ? customFilter : filterVal;
+
+        if (filterVal) {
+            tableCliente.setFilter(filter, typeVal, search);
+        }
+    }catch(error){
+        MessageError();
+    }
+}
+
+
+BUTTONSEARCH.addEventListener('click', () => {
     const SEARCHINPUT = document.getElementById('inputSearch').value;
     updateFilter(SEARCHINPUT);
 });
 
-INPUTNULL.addEventListener('change', () =>{
-if  (document.getElementById('inputSearch').value == ''){
-    tableCliente.clearFilter();
-}
+INPUTNULL.addEventListener('change', () => {
+    if (document.getElementById('inputSearch').value == '') {
+        tableCliente.clearFilter();
+    }
 });

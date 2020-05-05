@@ -1,11 +1,13 @@
-class Servicio {
+class Services {
     constructor(page) {
         
         switch (page) {
-            case 'cliente':
-                return  new Cliente();
-            case 'incidente':
-                return new Incidente();
+            case 'client':
+                return  new Client();
+            case 'address':
+                return new Address();
+            case 'incident':
+                return new Incident();
             default:
                 return null;
         }

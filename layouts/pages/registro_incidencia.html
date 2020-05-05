@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="../../app/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="../../app/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="../../app/plugins/toastr/toastr.min.css">
   <!-- JQVMap -->
   <!-- <link rel="stylesheet" href="../../app/plugins/jqvmap/jqvmap.min.css"> -->
   <!-- Theme style -->
@@ -41,7 +43,7 @@
   <script src="../../app/plugins/jquery-ui/jquery-ui.min.js" defer></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script src="../../app/plugins/tabulator/js/tabulator.js" defer></script>
-  <script src="../../app/js/core/event/registro_incidencia.js" defer></script>
+
   <script defer>
     $.widget.bridge('uibutton', $.ui.button)
   </script>
@@ -75,8 +77,13 @@
   <script src="../../app/js/core/api/servicios.js" defer></script>
   <!----------------------Data---------------------------------->
   <script src="../../app/js/core/api/datos.js" defer></script>
-  <!------------------------Services Incident-------------------------->
+  <!------------------------Services-------------------------->
   <script src="../../app/js/core/api/incidente_servicios.js" defer></script>
+  <script src="../../app/js/core/api/cliente_servicios.js" defer></script>
+  <!-- Toastr -->
+  <script src="../../app/plugins/toastr/toastr.min.js" defer></script>
+  <!--------------------------registro Incidente-------------------------->
+  <script src="../../app/js/core/event/registro_incidencia.js" defer></script>
 
 
 
@@ -300,7 +307,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="./registrar_clientes.html" class="nav-link">
+                    <a href="./registro_cliente.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Registrar Clientes</p>
                     </a>
@@ -375,12 +382,12 @@
                     <div class="col-md-2">
                       <div class="form-group">
                         <label for="inputStatus">Tipo Documento:</label>
-                        <select class="form-control custom-select">
-                          <option selected disabled>Select one</option>
+                        <select class="form-control custom-select" id ="tipoId">
+                          <option selected disabled>Seleccionar tipo de Documento</option>
                           <option>Tarjeta de identidad</option>
                           <option>Cédula de ciudadanía</option>
                           <option>Cédula de Extranjería</option>
-                          <option>Contraseña registraduria</option>
+                          <option id ="gender">Contraseña registraduria</option>
                         </select>
                       </div>
                     </div>
@@ -392,37 +399,20 @@
                     </div>
                     <div class="col-md-3">
 
-                    </div>
-                    <!-- <div class="col-md-7">
-                      
-                        <div class="card">
-                          <div class="card-body">
-                            <div class="row">
-                            <div class="col-md-8">
-                              <p>Ver información completa del usuario.</p>
-                            </div>
-                            <div class="col-md-2">
-                              <button class="btn btn-success"><i class="fas fa-address-card"></i></button>
-                            </div> 
-                          </div>   
-                          </div>
-                        </div>
-                      
-                    </div> -->
-
+                    </div> 
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="inputName">Nombre Cliente</label>
-                        <input type="text" id="inputName" id="name" class="form-control">
+                        <input type="text" id="name"  class="form-control" disabled>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="inputName">Apellido Cliente</label>
-                        <input type="text" id="inputName" id="lastName" class="form-control">
+                        <input type="text" id="lastName" class="form-control"  disabled>
                       </div>
                     </div>
                   </div>
@@ -430,13 +420,13 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="inputName">Celular</label>
-                        <input type="text" id="phone" class="form-control">
+                        <input type="text" id="phone" class="form-control" disabled>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="inputName">Telefono</label>
-                        <input type="text" id="landline" class="form-control">
+                        <input type="text" id="landline" class="form-control" disabled>
                       </div>
                     </div>
                   </div>
@@ -444,13 +434,19 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="inputName">Correo Electronico</label>
-                        <input type="text" id="email" class="form-control">
+                        <input type="text" id="email" class="form-control"disabled>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                       <div class="form-group">
                         <label for="inputName">Direccion Cliente</label>
-                        <input type="text" id="address" class="form-control">
+                        <input type="text" id="address" class="form-control" disabled>
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <div class="form-group">
+                        <label for="inputName">Seleccionar</label>
+                        <button class="btn btn-success"><i class="fa ion-home" aria-hidden="true"></i></button>
                       </div>
                     </div>
                   </div>
@@ -498,7 +494,7 @@
                       <div class="form-group">
                         <label for="inputStatus">Tipo de incidente</label>
                         <select id='indenceType' class="form-control custom-select">
-                          <option selected disabled>Seleccionar tipo de incidente </option>
+                          <option selected>Seleccionar tipo de incidente </option>
                           <option>Software</option>
                           <option>Red</option>
                           <option>Hardware</option>
@@ -536,9 +532,9 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="inputStatus">Tecnico presencial</label>
-                        <select class="form-control custom-select">
-                          <option selected disabled>Seleccione el tecnico presencial </option>
-                          <option>Alejandro Vera Quintero</option>
+                        <select class="form-control custom-select" id  ="idTecnico">
+                          <option selected>Seleccione el tecnico presencial </option>
+                          <option >Alejandro Vera Quintero</option>
                           <option>Juan David Alcala</option>
                         </select>
                       </div>
@@ -566,7 +562,30 @@
 
           </div>
           <!-- /.row -->
-
+          <div class="modal fade" id="modal-address">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header bg-success" style="color: #ffffff">
+                  <h3 class="card-title">
+                    <i class="fas fa-edit"></i>
+                    Recidencia
+                  </h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div id="tabResidencia"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer justify-content-between bg-success">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
 
 
         </div><!-- /.container-fluid -->
@@ -574,13 +593,7 @@
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-      All rights reserved.
-      <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.0.2
-      </div>
-    </footer>
+
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
