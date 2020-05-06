@@ -35,8 +35,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
     <!-- *********************************************** CALL TO SCRIPTS **************************************************** -->
-    <!---------------------JS Global------------------------->
-    <script src="../../app/js/core/global.js" defer></script>
+    
     <!-- jQuery -->
     <script src="../../app/plugins/jquery/jquery.min.js" defer></script>
     <!-- jQuery UI 1.11.4 -->
@@ -69,6 +68,8 @@
     <script src="../../app/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js" defer></script>
     <!-- AdminLTE App -->
     <script src="../../app/js/adminlte/adminlte.min.js" defer></script>
+    <!---------------------JS Global------------------------->
+    <script src="../../app/js/core/global.js" defer></script> 
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="../../app/js/core/dashboard.js" defer></script>
     <!-- AdminLTE for demo purposes -->
@@ -227,7 +228,7 @@
                             Activity Log
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                        <a class="dropdown-item" href="../../layouts/pages/login.html" id="logout">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             Logout
                         </a>
@@ -320,6 +321,24 @@
                                         </a>
                                     </li>
                                 </ul>
+                            </li>
+                            <li class="nav-item has-treeview menu-open" style="display:none" id ="AsignacionIncidente">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon ion-clipboard"></i>
+                                    <p>
+                                        Asignación de incidentes
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="./asignaciones_tecnicos.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Incidentes asignados</p>
+                                        </a>
+                                    </li>
+                                </ul>
+
                             </li>
                         </ul>
                     </nav>
@@ -498,7 +517,8 @@
                                         </div>
                                         <div class="col-md-1">
                                             <button class="btn btn-success toastrDefaultSuccess" style="margin: 15px;"
-                                                data-toggle="modal" data-target="#modal-Residencia"> <i class="fa fa-plus" aria-hidden="true"></i> </button>
+                                                data-toggle="modal" data-target="#modal-Residencia"> <i
+                                                    class="fa fa-plus" aria-hidden="true"></i> </button>
                                         </div>
                                     </div>
                                 </div>
@@ -588,8 +608,9 @@
                                     <div class="col-md-5">
                                     </div>
                                     <div class="col-md-4">
-                                        <button id= "addDireccion" class="btn btn-primary toastrDefaultSuccess" data-dismiss="modal"style="margin: 15px;">
-                                             Nueva Dirección </button>
+                                        <button id="addDireccion" class="btn btn-primary toastrDefaultSuccess"
+                                            data-dismiss="modal" style="margin: 15px;">
+                                            Nueva Dirección </button>
                                     </div>
                                     <div class="col-md-2">
                                     </div>

@@ -2,7 +2,7 @@ const BUTTONSEARCH = document.querySelector('#search');
 const INPUTNULL = document.getElementById('inputSearch');
 
 const tableCliente = new Tabulator("#tabHistorialIncidencias", {
-    ajaxURL: "http://localhost:3000/Usuarios?idTipoUsuario: Cliente",
+    ajaxURL: "http://localhost:3000/Usuarios?idTipoUsuario=Cliente",
     layout: "fitColumns",
     pagination: "local",
     paginationSize: 10,

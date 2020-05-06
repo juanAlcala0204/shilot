@@ -40,9 +40,10 @@ const CreacionInformacion = (id) => {
             document.getElementById('infoTypeIncident').value = data[0].tipoIncidente;
             document.getElementById('infoIdentification').value = data[0].identificacionProblema;
             document.getElementById('infoDate').value = data[0].fechaCapturaIncidente;
+            document.getElementById('infoAddress').value = data[0].address;
         });
         const DATACLIENT = new Services('client');
-        const CLIENT = DATACLIENT.SearchClient(document.getElementById('infoId').value);
+        const CLIENT = DATACLIENT.SearchClient(document.getElementById('infoId').value,'Cliente');
         CLIENT.then(dataClient => {
            document.getElementById('infoTypeId').value = dataClient[0].tipoId;
             document.getElementById('infoName').value = dataClient[0].nombreUsuario;
@@ -50,7 +51,7 @@ const CreacionInformacion = (id) => {
             document.getElementById('infoPhone').value = dataClient[0].celularUsuario;
             document.getElementById('infoLandline').value = dataClient[0].telefonoUsuario;
             document.getElementById('infoEmail').value = dataClient[0].emailUsuario;
-            document.getElementById('infoAddress').value = 0
+        
         })
 
 

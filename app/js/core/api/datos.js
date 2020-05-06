@@ -1,12 +1,13 @@
 class Data {
-    constructor(){
+    constructor() {
         this.clients;
         this.incidents;
         this.address;
+        this.login;
     }
     DataClient() {
         this.clients = {
-            tipoId : document.getElementById('tipoId').value,
+            tipoId: document.getElementById('tipoId').value,
             idUsuario: document.getElementById('id').value,
             nombreUsuario: document.getElementById('name').value,
             apellidoUsuario: document.getElementById('lastName').value,
@@ -17,7 +18,7 @@ class Data {
             idTipoUsuario: "Cliente",
         };
         return this.clients;
-    };
+    }
 
     DataIncident() {
         this.incidents = {
@@ -27,14 +28,15 @@ class Data {
             identificacionProblema: document.getElementById('identificationProblem').value,
             finalizacionIncidente: "0",
             diasIncidente: "0",
-            direccionCliente:document.getElementById('address').value,
+            direccionCliente: document.getElementById('address').value,
             estadoIncidente: document.getElementById('state').value,
             idUsuario: document.getElementById('id').value,
             tipoIncidente: document.getElementById('indenceType').value,
-            tecnico:document.getElementById('idTecnico').value 
+            tecnico: document.getElementById('idTecnico').value,
+            address : document.getElementById('address').value
         }
         return this.incidents;
-    };
+    }
 
     DataAddress() {
         this.address = {
@@ -46,6 +48,17 @@ class Data {
             idUsuario: document.getElementById('id').value
         };
         return this.address;
-    };
+    }
+
+    DataLogin() {
+
+        this.login = {
+            nameUser: document.getElementById('email').value,
+            password: document.getElementById('password').value
+
+        };
+
+        return this.login;
+    }
 
 }
