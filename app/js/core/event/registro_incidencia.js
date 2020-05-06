@@ -6,21 +6,37 @@ const ADDRESS  = document.querySelector('#buttonAddress');
 const createInput = () => {
     try {
         let checkbox;
+        let TECNICOS ;
+        TECNICOS = document.getElementById('idTecnico');
         checkbox = document.forms['access']['dropdownList'].checked;
+        
         if (!checkbox) {
             document.getElementById('showHideTechnical').style.display = 'none';
         } else {
+            
             document.getElementById('showHideTechnical').style.display = 'block';
+            dataClient = new Services('client');
+            const CLIENT = dataClient.SearchClientType('Tecnico');
+            CLIENT.then(data => {
+                for(let i  in data){
+                    let option ;
+                    option = document.createElement("option"),txt = document.createTextNode(data[i].nombreUsuario +" "+ data[0].apellidoUsuario)
+                    option.appendChild(txt);
+                    option.setAttribute('value',data[i].idUsuario)
+                    TECNICOS.insertBefore(option,TECNICOS.lastChild);
+                }
+            });
         }
     } catch (error) {
         MessageError();
+        console.log(error);
     }
 
 
 }
 
 const tableClient = new Tabulator("#tabCliente", {
-    ajaxURL: "http://localhost:3000/Usuarios",
+    ajaxURL: "http://localhost:3000/Usuarios?idTipoUsuario=Cliente",
     layout: "fitColumns",
     height: "30%",
     columns: [
@@ -52,14 +68,14 @@ IDCLIENT.addEventListener('change', () => {
     } else {
         try {
             dataClient = new Services('client');
-            const CLIENT = dataClient.SearchClient(param);
+            const CLIENT = dataClient.SearchClient(param,'Cliente');
             CLIENT.then(data => {
                 document.getElementById('tipoId').value = data[0].tipoId;
-                document.getElementById('name').value = data[0].nombreUsuario
-                document.getElementById('lastName').value = data[0].apellidoUsuario
-                document.getElementById('email').value = data[0].emailUsuario
-                document.getElementById('phone').value = data[0].celularUsuario
-                document.getElementById('landline').value = data[0].telefonoUsuario
+                document.getElementById('name').value = data[0].nombreUsuario;
+                document.getElementById('lastName').value = data[0].apellidoUsuario;
+                document.getElementById('email').value = data[0].emailUsuario;
+                document.getElementById('phone').value = data[0].celularUsuario;
+                document.getElementById('landline').value = data[0].telefonoUsuario;
             });
            
         }catch (error){

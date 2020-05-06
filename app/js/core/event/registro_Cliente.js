@@ -43,7 +43,7 @@ CLIENT.addEventListener('change', () => {
     } else {
         try {
             dataClient = new Services('client');
-            const CLIENT = dataClient.SearchClient(param);
+            const CLIENT = dataClient.SearchClient(param,'Cliente');
             CLIENT.then(data => {
                 document.getElementById('tipoId').value = data[0].tipoId;
                 document.getElementById('name').value = data[0].nombreUsuario;

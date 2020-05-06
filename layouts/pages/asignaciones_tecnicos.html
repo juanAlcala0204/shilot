@@ -36,7 +36,8 @@
 
   <!-- *********************************************** CALL TO SCRIPTS **************************************************** -->
 
-
+  <!---------------------JS Global------------------------->
+  <script src="../../app/js/core/global.js" defer></script>
   <!-- jQuery -->
   <script src="../../app/plugins/jquery/jquery.min.js" defer></script>
   <!-- jQuery UI 1.11.4 -->
@@ -74,8 +75,6 @@
   <script src="../../app/js/core/dashboard.js" defer></script>
   <!-- AdminLTE for demo purposes -->
   <script src="../../app/js/adminlte/demo.js" defer></script>
-  <!---------------------JS Global------------------------->
-  <script src="../../app/js/core/global.js" defer></script>
   <!----------------Services--------------------------->
   <script src="../../app/js/core/api/servicios.js" defer></script>
   <!----------------------Data---------------------------------->
@@ -84,7 +83,7 @@
   <script src="../../app/js/core/api/incidente_servicios.js" defer></script>
   <script src="../../app/js/core/api/cliente_servicios.js" defer></script>
   <!--------------------------Historial Incidencia-------------------->
-  <script src="../../app/js/core/historial_incidencia.js" defer></script>
+  <script src="../../app/js/core/asignaciones.js" defer></script>
 
 
   <!-- *********************************************** FINISH CALL TO SCRIPTS **************************************************** -->
@@ -319,7 +318,7 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-item has-treeview menu-open" style="display:none" id="AsignacionIncidente">
+              <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link">
                   <i class="nav-icon ion-clipboard"></i>
                   <p>
@@ -372,6 +371,23 @@
                 </div>
                 <div class="card-body">
                   <div class="row">
+                    <div class="card card-primary">
+                      <div class="card-body" style="background-color: #f8f9fa;">
+                        <form class="form-inline ml-8">
+                          <div class="input-group input-group-sm">
+                            <input class="form-control form-control-navbar" id="inputSearch" type="text"
+                              placeholder="Identificación" aria-label="Search">
+                            <div class="input-group-append">
+                              <button class="btn btn-primary" id="search" type="button">
+                                <i class="fas fa-search"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
                     <div class="col-md-12">
                       <div id="tabHistorialIncidencias">
 
@@ -414,7 +430,19 @@
                         </div>
                       </div>
                       <div class="card-body">
-
+                        <div class="row">
+                          <div class="col-md-2">
+                            <div class="form-group">
+                              <label for="inputStatus">Numero de incidencia</label>
+                              <input type="text" id="editIdIncident" class="form-control" disabled>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <input type="text" id="editIdNumber" class="form-control" style="display: none;">
+                          </div>
+                          <div class="col-md-2">
+                          </div>
+                        </div>
                         <hr>
                         <div class="row">
                           <div class="col-md-2">
@@ -423,8 +451,8 @@
                           <div class="col-md-4">
                             <div class="form-group">
                               <label for="inputStatus">Tipo Documento:</label>
-                              <select class="form-control custom-select">
-                                <option selected disabled>Select one</option>
+                              <select class="form-control custom-select" id="editTypeId" disabled>
+                                <option selected disabled>Selecciones tipo de identificacion</option>
                                 <option>Tarjeta de identidad</option>
                                 <option>Cédula de ciudadanía</option>
                                 <option>Cédula de Extranjería</option>
@@ -435,7 +463,7 @@
                           <div class="col-md-4">
                             <div class="form-group">
                               <label for="inputName">Numero Identificación:</label>
-                              <input type="text" id="inputName" class="form-control">
+                              <input type="text" id="editId" class="form-control" disabled>
                             </div>
                           </div>
                           <div class="col-md-2">
@@ -447,13 +475,13 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label for="inputName">Nombre Cliente</label>
-                              <input type="text" id="inputName" class="form-control">
+                              <input type="text" id="editName" class="form-control" disabled>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label for="inputName">Apellido Cliente</label>
-                              <input type="text" id="inputName" class="form-control">
+                              <input type="text" id="editLastName" class="form-control" disabled>
                             </div>
                           </div>
                         </div>
@@ -461,13 +489,13 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label for="inputName">Celular</label>
-                              <input type="text" id="inputName" class="form-control">
+                              <input type="text" id="editPhone" class="form-control" disabled>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label for="inputName">Telefono</label>
-                              <input type="text" id="inputName" class="form-control">
+                              <input type="text" id="editLandline" class="form-control" disabled>
                             </div>
                           </div>
                         </div>
@@ -475,13 +503,13 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label for="inputName">Correo Electronico</label>
-                              <input type="text" id="inputName" class="form-control">
+                              <input type="text" id="editEmail" class="form-control" disabled>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label for="inputName">Direccion Cliente</label>
-                              <input type="text" id="inputName" class="form-control">
+                              <input type="text" id="editAddress" class="form-control" disabled>
                             </div>
                           </div>
                         </div>
@@ -510,14 +538,14 @@
                           <div class="col-md-4">
                             <div class="form-group">
                               <label for="inputName">Fecha</label>
-                              <input type="date" id="inputName" class="form-control">
+                              <input type="date" id="editDate" class="form-control">
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
                               <label for="inputStatus">Estado</label>
-                              <select class="form-control custom-select">
-                                <option selected disabled>Seleccionar Estado</option>
+                              <select class="form-control custom-select" id="editState">
+                                <option selected>Seleccionar Estado</option>
                                 <option>Recibido</option>
                                 <option>Escalar</option>
                                 <option>Finalizado</option>
@@ -527,8 +555,8 @@
                           <div class="col-md-4">
                             <div class="form-group">
                               <label for="inputStatus">Tipo de incidente</label>
-                              <select class="form-control custom-select">
-                                <option selected disabled>Seleccionar tipo de incidente </option>
+                              <select class="form-control custom-select" id="editTypeIncident">
+                                <option selected>Seleccionar tipo de incidente </option>
                                 <option>Software</option>
                                 <option>Red</option>
                                 <option>Hardware</option>
@@ -540,13 +568,13 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label for="inputName">Definición del problema </label>
-                              <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                              <textarea id="editDefinition" class="form-control" rows="4"></textarea>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label for="inputName">Identificación del problema</label>
-                              <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                              <textarea id="editIdentification" class="form-control" rows="4"></textarea>
                             </div>
                           </div>
                         </div>

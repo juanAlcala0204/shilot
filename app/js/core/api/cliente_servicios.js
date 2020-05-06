@@ -27,13 +27,38 @@ class Client extends Data{
         }
     }
 
-    async SearchClient(params) {
+    async SearchClient(param,TipoUsuario) {
         let url ;
         let response;
         let data;
         url= new URL('http://localhost:3000/Usuarios')
         url.search = new URLSearchParams({
-            idUsuario: params
+            idUsuario: param,
+            idTipoUsuario:TipoUsuario
+        })
+        const SETTINGS = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            mode: 'cors'
+        };
+        try {
+            response = await fetch(url, SETTINGS);
+            data = await response.json();
+            return data;
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async SearchClientType(TipoUsuario) {
+        let url ;
+        let response;
+        let data;
+        url= new URL('http://localhost:3000/Usuarios')
+        url.search = new URLSearchParams({
+            idTipoUsuario:TipoUsuario
         })
         const SETTINGS = {
             method: 'GET',

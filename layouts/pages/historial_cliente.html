@@ -35,15 +35,12 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <!-- *********************************************** CALL TO SCRIPTS **************************************************** -->
-  <!---------------------JS Global------------------------->
-  <script src="../../app/js/core/global.js" defer></script>
+  
   <!-- jQuery -->
   <script src="../../app/plugins/jquery/jquery.min.js" defer></script>
   <!-- jQuery UI 1.11.4 -->
   <script src="../../app/plugins/jquery-ui/jquery-ui.min.js" defer></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-  <script src="../../app/plugins/tabulator/js/tabulator.js" defer></script>
-  <script src="../../app/js/core/historial_clientes.js" defer></script>
   <!--<script defer>
         $.widget.bridge('uibutton', $.ui.button)
     </script>-->
@@ -71,10 +68,15 @@
   <script src="../../app/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js" defer></script>
   <!-- AdminLTE App -->
   <script src="../../app/js/adminlte/adminlte.min.js" defer></script>
+  <!---------------------JS Global------------------------->
+  <script src="../../app/js/core/global.js" defer></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="../../app/js/core/dashboard.js" defer></script>
   <!-- AdminLTE for demo purposes -->
   <script src="../../app/js/adminlte/demo.js" defer></script>
+  
+  <script src="../../app/plugins/tabulator/js/tabulator.js" defer></script>
+  <script src="../../app/js/core/historial_clientes.js" defer></script>
 
   <!-- *********************************************** FINISH CALL TO SCRIPTS **************************************************** -->
 </head>
@@ -216,7 +218,7 @@
               Activity Log
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+            <a class="dropdown-item" href="../../layouts/pages/login.html" id="logout">
               <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
               Logout
             </a>
@@ -307,6 +309,24 @@
                     </a>
                   </li>
                 </ul>
+              </li>
+              <li class="nav-item has-treeview menu-open" style ="display:none" id ="AsignacionIncidente">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon ion-clipboard"></i>
+                  <p>
+                    Asignación de incidentes
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="./asignaciones_tecnicos.html" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Incidentes asignados</p>
+                    </a>
+                  </li>
+                </ul>
+                
               </li>
             </ul>
           </nav>
